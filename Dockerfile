@@ -36,8 +36,8 @@ RUN sudo curl -o /bin/gosu -sSL "https://github.com/tianon/gosu/releases/downloa
 # Install Python3.5
 RUN sudo apt-get -y install software-properties-common \
     python-software-properties
-RUN sudo add-apt-repository ppa:fkrull/deadsnakes
-    && sudo apt-get update
+RUN sudo add-apt-repository ppa:fkrull/deadsnakes \
+    && sudo apt-get update \
     && sudo apt-get install python3.5
 
 # Install node version manager as distelli user
