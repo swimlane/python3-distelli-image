@@ -39,6 +39,8 @@ RUN sudo apt-get -y install software-properties-common \
 RUN sudo add-apt-repository ppa:fkrull/deadsnakes \
     && sudo apt-get update -y \
     && sudo apt-get -y install python3.5
+RUN wget https://bootstrap.pypa.io/get-pip.py \
+    && sudo python3.5 get-pip.py
 
 # Install node version manager as distelli user
 USER distelli
