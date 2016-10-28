@@ -34,7 +34,7 @@ RUN sudo curl -o /bin/gosu -sSL "https://github.com/tianon/gosu/releases/downloa
      && sudo chmod +x /bin/gosu
 
 # Install Python3
-RUN sudo apt-get install python3 python3-pip
+RUN sudo apt-get -y install python3 python3-pip
 
 # Install node version manager as distelli user
 USER distelli
