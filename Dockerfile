@@ -38,7 +38,7 @@ RUN sudo apt-get -y install software-properties-common \
     python-software-properties
 RUN sudo add-apt-repository ppa:fkrull/deadsnakes \
     && sudo apt-get update -y \
-    && sudo apt-get -y install python3.5
+    && sudo apt-get -y install python3.5 python3.5-dev
 RUN wget https://bootstrap.pypa.io/get-pip.py \
     && sudo python3.5 get-pip.py
 
