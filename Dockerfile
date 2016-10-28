@@ -33,8 +33,10 @@ ENV GOSU_VERSION 1.9
 RUN sudo curl -o /bin/gosu -sSL "https://github.com/tianon/gosu/releases/download/1.9/gosu-$(dpkg --print-architecture)" \
      && sudo chmod +x /bin/gosu
 
-# Install Python3
-RUN sudo apt-get -y install python3 python3-pip
+# Install Python3.5
+RUN sudo add-apt-repository ppa:fkrull/deadsnakes
+    && sudo apt-get update
+    && sudo apt-get install python3.5
 
 # Install node version manager as distelli user
 USER distelli
