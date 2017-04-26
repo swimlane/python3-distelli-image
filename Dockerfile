@@ -9,6 +9,7 @@ RUN sudo apt-get update -y \
     && sudo apt-get -y install build-essential checkinstall git mercurial \
     && sudo apt-get -y install libssl-dev openssh-client openssh-server \
     && sudo apt-get -y install curl apt-transport-https ca-certificates chromium-browser
+ENV CHROME_BIN /usr/bin/chromium-browser
 
 RUN sudo sh -c "ssh-keyscan -H github.com bitbucket.org >> /etc/ssh/ssh_known_hosts"
 
