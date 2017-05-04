@@ -5,11 +5,12 @@ RUN useradd -ms /bin/bash distelli
 
 WORKDIR /home/distelli
 
-RUN sudo apt-get update -y \
+RUN apt-get update -y \
     && sudo apt-get -y install build-essential checkinstall git mercurial \
     && sudo apt-get -y install libssl-dev openssh-client openssh-server \
-    && sudo apt-get -y install curl apt-transport-https ca-certificates chromium-browser
-ENV CHROME_BIN /usr/bin/chromium-browser
+    && sudo apt-get -y install curl apt-transport-https ca-certificates zip 
+
+ENV CHROME_BIN /usr/bin/google-chrome
 
 RUN sudo sh -c "ssh-keyscan -H github.com bitbucket.org >> /etc/ssh/ssh_known_hosts"
 
@@ -42,6 +43,12 @@ RUN sudo add-apt-repository ppa:fkrull/deadsnakes \
     && sudo apt-get -y install python3.5 python3.5-dev
 RUN wget https://bootstrap.pypa.io/get-pip.py \
     && sudo python3.5 get-pip.py
+
+RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
+    && echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list \
+    && apt-get update \
+    && apt-get install -y google-chrome-beta
+    #&& apt-get install --no-install-recommends -y google-chrome-stable
 
 # Install node version manager as distelli user
 USER distelli
